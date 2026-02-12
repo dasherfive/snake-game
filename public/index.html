@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>現代貪食蛇 Snake</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Mute Toggle -->
+        <button id="btn-mute" class="icon-btn" title="切換音效">🔊</button>
+
+        <!-- Main Menu -->
+        <div id="menu-screen" class="screen">
+            <h1>貪食蛇 Snake</h1>
+            <button id="btn-start" class="btn">開始遊戲</button>
+            <button id="btn-leaderboard" class="btn">排行榜</button>
+        </div>
+
+        <!-- Level Selection -->
+        <div id="level-screen" class="screen hidden">
+            <h2>選擇關卡</h2>
+            <div class="level-select">
+                <button class="level-btn" data-level="1">
+                    <span class="level-num">1</span>
+                    <span class="level-desc">簡單 - 無障礙</span>
+                </button>
+                <button class="level-btn" data-level="2">
+                    <span class="level-num">2</span>
+                    <span class="level-desc">中等 - 隨機障礙</span>
+                </button>
+                <button class="level-btn" data-level="3">
+                    <span class="level-num">3</span>
+                    <span class="level-desc">困難 - 許多障礙</span>
+                </button>
+            </div>
+            <button id="btn-back-menu" class="btn secondary">返回</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="hud">
+                <div class="hud-item">Level: <span id="current-level">1</span></div>
+                <div class="hud-item">Score: <span id="current-score">0</span></div>
+            </div>
+            <canvas id="game-canvas" width="600" height="400"></canvas>
+            <div class="controls-hint">使用方向鍵移動</div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-screen" class="screen hidden overlay">
+            <div class="modal">
+                <h2>遊戲結束!</h2>
+                <p>最終得分: <span id="final-score">0</span></p>
+                <input type="text" id="player-name" placeholder="輸入您的名字" maxlength="15">
+                <button id="btn-submit-score" class="btn primary">送出並查看排行</button>
+                <button id="btn-restart" class="btn secondary">重玩本關</button>
+                <button id="btn-menu-from-gameover" class="btn text-btn">回主選單</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen hidden">
+            <h2>排行榜</h2>
+            <div class="leaderboard-container">
+                <table id="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>名字</th>
+                            <th>分數</th>
+                            <th>關卡</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <button id="btn-back-menu-lb" class="btn secondary">返回主選單</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
